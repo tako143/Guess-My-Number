@@ -10,11 +10,11 @@ const highScoreElem = document.querySelector('.highscore');
 let secretNumber = Math.floor(Math.random() * 20 + 1);
 let score = 20;
 let highScore = 0;
-console.log(secretNumber);
+// console.log(secretNumber);
 checkBtn.addEventListener('click', function() {
     let guess = Number(inputNumber.value);
-    if (!guess) {
-        message.textContent = '⛔️ No number!';
+    if(!guess || guess < 1 || guess > 20) {
+            message.textContent = '❕Please enter a number between 1 and 20'; 
     }else if(guess !== secretNumber) {
         if(score > 1) {
             message.textContent = guess > secretNumber ? '📈 Too High!' : '📉 Too Low!';
@@ -42,7 +42,7 @@ checkBtn.addEventListener('click', function() {
 
 againBtn.addEventListener('click', () => {
     secretNumber = Math.floor(Math.random() * 20 + 1);
-    console.log(secretNumber);
+    // console.log(secretNumber);
     score = 20;
     scoreElem.textContent = score;
     document.body.style.backgroundColor = '#222222';
